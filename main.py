@@ -7,7 +7,11 @@ import streamlit as st
 load_dotenv()
 
 # 2. Instantiate the OpenAI client using the API key from the environment.
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+#client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Remove load_dotenv() since .env won't be used
+# Fetch the API key securely from Streamlit Secrets
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
 
 def choose_gender():
     """Ask user for preferred companion gender (CLI version)."""
